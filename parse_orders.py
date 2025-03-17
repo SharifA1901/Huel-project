@@ -42,6 +42,7 @@ for record in orders_data:
     total_price = order.get("amounts", {}).get("total", 0)
     currency = order.get("currency")
     source = order.get("source")
+    customer_reference = order.get("customerReference")
 
     # This handles different timestamp formats
     if order_date:
@@ -57,10 +58,12 @@ for record in orders_data:
 
     orders.append({
         "order_id": order_id,
+        "customer_reference": customer_reference,
         "order_date": order_date,
         "total_price": total_price,
         "currency": currency,
         "source": source
+        
     })
 
     # Extract Customer Details
